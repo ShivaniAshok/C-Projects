@@ -11,6 +11,7 @@ a
 #include <stdlib.h>
 
 double division(double, double);
+double modulus(double, double); // modulus works for only int
 void print_menu();
 
 int main()
@@ -57,12 +58,10 @@ int main()
             return 1;
         break;
     case 5:
-        if ((int)num2 == 0)
-        {
-            fprintf(stderr, "Invalid Argument for Modulus\n");
+
+        res = modulus(num1, num2);
+        if (isnan(res))
             return 1;
-        }
-        res = (int)num1 % (int)num2; // since num1 & num2 are double cast to int
         break;
     case 6:
         res = pow(num1, num2);
@@ -87,6 +86,19 @@ double division(double a, double b)
     else
     {
         return a / b;
+    }
+}
+
+double modulus(double a, double b)
+{
+    if ((int)b == 0) // modulus works for only int
+    {
+        fprintf(stderr, "Invalid Argument for Modulus\n");
+        return NAN;
+    }
+    else
+    {
+        return (int)a % (int)b; // since num1 & num2 are double cast to int
     }
 }
 
