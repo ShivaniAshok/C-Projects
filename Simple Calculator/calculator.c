@@ -51,7 +51,7 @@ int main()
         res = num1 * num2;
         break;
     case 4:
-        division(num1, num2);
+        res = division(num1, num2);
         break;
     case 5:
         res = (int)num1 % (int)num2; // since num1 & num2 are double cast to int
