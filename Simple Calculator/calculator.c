@@ -19,58 +19,64 @@ int main()
     int choice;
     double num1, num2, res = 0;
 
-    print_menu();
-    printf("\nEnter your choice: ");
-    scanf("%d", &choice);
-
-    if (choice < 1 || choice > 7)
+    while (1)
     {
-        fprintf(stderr, "\nPlease enter a valid choice (1-7).\n");
-        return 1;
-    }
 
-    if (choice == 7)
-    {
-        printf("Exiting calculator...\n");
-        return 0;
-    }
+        print_menu();
+        printf("\nEnter your choice: ");
+        scanf("%d", &choice);
 
-    printf("\nPlease enter the first num: ");
-    scanf("%lf", &num1);
-
-    printf("Now enter the second num: ");
-    scanf("%lf", &num2);
-
-    switch (choice)
-    {
-    case 1:
-        res = num1 + num2;
-        break;
-    case 2:
-        res = num1 - num2;
-        break;
-    case 3:
-        res = num1 * num2;
-        break;
-    case 4:
-        res = division(num1, num2);
-        if (isnan(res))
+        if (choice < 1 || choice > 7)
+        {
+            fprintf(stderr, "\nPlease enter a valid choice (1-7).\n");
             return 1;
-        break;
-    case 5:
+        }
 
-        res = modulus(num1, num2);
-        if (isnan(res))
-            return 1;
-        break;
-    case 6:
-        res = pow(num1, num2);
-        break;
-    }
+        if (choice == 7)
+        {
+            printf("Exiting calculator...\n");
+            return 0;
+        }
 
-    if (choice >= 1 && choice <= 6)
-    {
-        printf("\nResult of operation is: %.2lf\n", res);
+        printf("\nPlease enter the first num: ");
+        scanf("%lf", &num1);
+
+        printf("Now enter the second num: ");
+        scanf("%lf", &num2);
+
+        switch (choice)
+        {
+        case 1:
+            res = num1 + num2;
+            break;
+        case 2:
+            res = num1 - num2;
+            break;
+        case 3:
+            res = num1 * num2;
+            break;
+        case 4:
+            res = division(num1, num2);
+            if (isnan(res))
+                continue;
+
+            break;
+        case 5:
+
+            res = modulus(num1, num2);
+            if (isnan(res))
+                continue;
+
+            break;
+        case 6:
+            res = pow(num1, num2);
+            break;
+        }
+
+        if (choice >= 1 && choice <= 6)
+        {
+            printf("\nResult of operation is: %.2lf\n", res);
+        }
     }
 
     return 0;
@@ -104,6 +110,7 @@ double modulus(double a, double b)
 
 void print_menu()
 {
+    printf("\n---------------------------------------------");
     printf("\nWelcome to Simple Calculator\n");
     printf("\nChoose one of the following options: ");
     printf("\n1. Addition");
