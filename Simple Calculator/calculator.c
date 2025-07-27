@@ -9,6 +9,7 @@ a
 #include <stdio.h>
 #include <math.h>
 
+double division(double, double);
 void print_menu();
 
 int main()
@@ -50,7 +51,7 @@ int main()
         res = num1 * num2;
         break;
     case 4:
-        res = num1 / num2;
+        division(num1, num2);
         break;
     case 5:
         res = (int)num1 % (int)num2; // since num1 & num2 are double cast to int
@@ -66,6 +67,19 @@ int main()
     }
 
     return 0;
+}
+
+double division(double a, double b)
+{
+    if (b == 0)
+    {
+        fprintf(stderr, "Invalid Argument for Division");
+        return NAN;
+    }
+    else
+    {
+        return a / b;
+    }
 }
 
 void print_menu()
