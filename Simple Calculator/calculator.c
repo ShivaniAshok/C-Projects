@@ -8,6 +8,7 @@ a
 
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 double division(double, double);
 void print_menu();
@@ -52,8 +53,15 @@ int main()
         break;
     case 4:
         res = division(num1, num2);
+        if (isnan(res))
+            return 1;
         break;
     case 5:
+        if ((int)num2 == 0)
+        {
+            fprintf(stderr, "Invalid Argument for Modulus\n");
+            return 1;
+        }
         res = (int)num1 % (int)num2; // since num1 & num2 are double cast to int
         break;
     case 6:
@@ -63,7 +71,7 @@ int main()
 
     if (choice >= 1 && choice <= 6)
     {
-        printf("\nResult of operation is: %.2lf", res);
+        printf("\nResult of operation is: %.2lf\n", res);
     }
 
     return 0;
@@ -73,7 +81,7 @@ double division(double a, double b)
 {
     if (b == 0)
     {
-        fprintf(stderr, "Invalid Argument for Division");
+        fprintf(stderr, "Invalid Argument for Division\n");
         return NAN;
     }
     else
