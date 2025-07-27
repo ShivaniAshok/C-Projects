@@ -25,7 +25,7 @@ int main()
 
     if (choice < 1 || choice > 7)
     {
-        printf("\nPlease enter a valid choice (1-7).\n");
+        fprintf(stderr, "\nPlease enter a valid choice (1-7).\n");
         return 1;
     }
 
